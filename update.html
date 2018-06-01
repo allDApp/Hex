@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+</script>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>HEX</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<!-- HTML5 shim for IE8 support of HTML5 elements -->
+	<!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <![endif]-->
+	<link rel="icon" href="https://nebulas.io/assets/images/logo.png" type="image/png">
+	<link rel="shortcut icon" href="https://nebulas.io/assets/images/logo.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="./js/global.css">
+	<link rel="stylesheet" type="text/css" href="./js/header.css">
+	<link rel="stylesheet" type="text/css" href="./js/footer.css">
+
+	<link href="./js/bootstrap.min.css" rel="stylesheet">
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/html5media.js"></script>
+	<script src="./js/tweenmax.min.js"></script>
+	<script src="./js/baidu_hm.js"></script>
+	<script src="./js/nebPay.js"></script> 
+	<script src="./js/index.js"></script>
+	<link href="./js/engine.css" rel="stylesheet" type="text/css">
+	<style>
+		ul {
+			margin-bottom: 0px;
+		}
+
+		.topbg {
+			background-repeat: no-repeat;
+			background-position: center 0;
+			-webkit-background-size: cover;
+			background-size: cover;
+			min-height: 850px;
+			background-image: url(./images/banner.png);
+			background-attachment: fixed;
+			width: 100%;
+			position: absolute;
+			top: 55px;
+		}
+	</style>
+	<link href="./js/productsg.css" rel="stylesheet" type="text/css">
+	<script charset="utf-8" src="chrome-extension://jgphnjokjhjlcnnajmfjlacjnjkhleah/js/btype.js"></script>
+</head>
+
+<body class="body-white">
+	<div class="topbg"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12" align="center">
+				<h4>
+					<div  id="main-menu =">
+						<div  role="presentation" href="javascript:void(0)" style="text-align:center">
+								<a id="getnew" href="javascript:void(0)" style="font-size:40px ;font-Family:微软雅黑 Light">Refresh List</a>
+						</div>
+						<br>
+						<div  role="presentation" href="javascript:void(0)" style="text-align:center">
+								<p id="PLAYERSOCS" href="javascript:void(0)" style="font-size:40px ;font-Family:微软雅黑 Light">Have Not Play Yet</p>
+						</div>
+						
+						
+								<div id="searchresult" style="min-height:250px; height:auto;color: dodgerblue">
+										<h3 id="searchresult" style="min-height:250px; height:auto!important;color:dodgerblue">
+												<a>Loading...</a>
+										</h3>
+								</div>
+						</div>
+				</h4>
+			</div>
+			<div class="col-xs-12">
+			</div>
+		</div>
+	</div>
+	<div class="row col-xs-12 col-sm-12" style="margin-top: 100px;"></div>
+
+	<script type="text/javascript">
+		var GV = {
+			DIMAUB: "/",
+			JS_ROOT: "public/js/",
+			TOKEN: ""
+		};
+	</script>
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/wind.js"></script>
+	<script src="./js/frontend.js"></script>
+	<script src="./js/nav.js"></script>
+	<script src="./js/html5media.js"></script>
+	<script>
+		$(document).ready(function () {
+			// sync productLogo Div width with productDes Div
+			$(".logos").css("width", $(".productDes").width());
+			$(window).resize(function () {
+				$(".logos").css("width", $(".productDes").width());
+			});
+			// 初始设置down arrow位置
+			defaultDownArrow();
+
+			function defaultDownArrow() {
+				if ($(".section3 .logos .productLogo:nth-of-type(1)").length == 0)
+					return;
+				var eLeft = $(".section3 .logos .productLogo:nth-of-type(1)").offset().left;
+				var dif = 40 - 14;
+				var arrowLeft = eLeft + dif;
+				$(".section3 .downArrow").css("left", arrowLeft + "px");
+			}
+			//点击后设置down arrow的位置
+			setDownArrow();
+
+			function setDownArrow() {
+				var logoList = $(".section3 .logos .productLogo");
+				for (var i = 0; i < logoList.length; i++) {
+					var logoItem = logoList[i];
+					logoItem.data_index = i + 1;
+					$(logoItem).hover(function () {
+						// 还原logo图标
+						rollBackLogo();
+						//替换图片src
+						var logoSrc = $(this).children("img").attr("src");
+						if (logoSrc.indexOf("active") == -1) {
+							var srcArray = logoSrc.split("/");
+							$(this).children("img").attr("src", srcArray[0] + "/" + srcArray[1] + "/active-" + srcArray[2]);
+						}
+						//设置三角位置
+						var eLeft = $(this).offset().left;
+						var dif = 40 - 14;
+						var arrowLeft = eLeft + dif;
+						$(".section3 .downArrow").css("left", arrowLeft + "px");
+					}, function () {
+						rollBackLogo();
+					})
+				}
+			}
+			
+		});
+	</script>
+	<script>
+  </script>
+	<script src="./js/engine.js"></script>
+	<script src="./js/popwin.js"></script>
+	<script src="./js/common.js"></script>
+	<script>
+		var host = window.location.host;
+		$(function () {
+			$.getJSON('https://' + host + '/basicConfig/engineLink.json', function (data) {
+				if (/macintosh|mac os x/i.test(navigator.userAgent) == true) {
+					$('#downloadHref').prop("href", data.mac);
+				} else {
+					$('#downloadHref').prop("href", data.windows);
+				}
+			});
+		})
+	</script>
+
+	<div id="sel-ext-win" class="sel-text-win" style="display: none;"></div>
+</body>
+
+</html>
