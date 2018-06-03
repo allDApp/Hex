@@ -42,7 +42,7 @@ $("#getnew").click(function() {
 
 				//					
 				tempStr += '<p>';
-				tempStr += res[i].Data+'  <small><cite>' + 'Player: ' + res[i].author + ' Time: ' + res[i].createdDate + '</cite></small>'
+				tempStr += res[i].Data+'  <small><cite>' + 'Player: ' + res[i].author.substr(3,5) + ' Time: ' + ttt(res[i].createdDate) + '</cite></small>'
 				tempStr += '</p> </div> ';
 			}
 			console.log(tempStr);
@@ -73,4 +73,13 @@ $("#upnew").click(function() {
 	});
 });
 
+function ttt(timestamp) {
+	var date = new Date(timestamp * 1000);//10*1000，13*0
+	Y = date.getFullYear() + '-';
+	M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+	D = date.getDate() + ' ';
+	h = date.getHours() + ':';
+	m = date.getMinutes();
+	return Y+M+D+h+m;
+}
 });
